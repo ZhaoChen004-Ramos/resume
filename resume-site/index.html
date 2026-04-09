@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>赵宸简历</title>
+        <style>
+            :root {
+                --color-white: #FFFFFF;
+                --color-black: #000000;
+                --color-darkgray: #333333;
+                --color-gray: #5D5D5D;
+                --color-lightgray: #999999;
+                --color-text: var(--color-darkgray);
+                --color-graytext: var(--color-gray);
+                --color-lighttext: var(--color-lightgray);
+                --color-awesome: #DC3522;
+                --font-size-base: 16px;
+                --spacing-unit: 1rem;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: var(--font-size-base);
+                line-height: 1.5;
+                color: var(--color-text);
+                background: var(--color-white);
+                padding: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            /* .cv-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            } */
+
+            .cv-name {
+                display: flex;
+                justify-content: center;
+                align-items: baseline;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .firstname {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--color-graytext);
+            }
+
+            .lastname {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--color-text);
+            }
+
+            .position {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                color: var(--color-awesome);
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-info {
+                font-size: 0.8rem;
+                color: var(--color-lighttext);
+            }
+
+            .section {
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--color-awesome);
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+                position: relative;
+            }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -0.25rem;
+                width: 100%;
+                height: 0.15rem;
+                background-color: var(--color-awesome);
+                opacity: 0.3;
+            }
+
+            .entry {
+                margin-bottom: 1.5rem;
+            }
+
+            .entry-title {
+                font-weight: 500;
+                margin-bottom: 0.25rem;
+            }
+            .entry-title-small {
+                font-weight: 700;
+                margin-bottom: 0.25rem;
+            }
+
+            .entry-info {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.95rem;
+                color: var(--color-graytext);
+                margin-bottom: 0.5rem;
+            }
+
+            .entry-description {
+                font-size: 0.85rem;
+                color: var(--color-lighttext);
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    padding: 1rem;
+                }
+
+                .entry-info {
+                    flex-direction: column;
+                    gap: 0.25rem;
+                }
+            }
+            .blue-link {
+                color: blue;
+                text-decoration: none; /* 移除下划线 */
+            }
+            .blue-link:hover {
+                text-decoration: underline; /* 悬停时显示下划线 */
+            }
+            .cv-header {
+                text-align: center;
+                margin-bottom: 2rem;
+                position: relative;
+                padding: 1rem;
+            }
+
+            .photo-container {
+                width: 120px;
+                height: 120px;
+                position: absolute;
+                overflow: hidden;
+            }
+
+            .photo-container.left {
+                left: 0;
+            }
+
+            .photo-container.right {
+                right: 0;
+            }
+
+            .photo-container.circle {
+                border-radius: 50%;
+            }
+
+            .photo-container.rectangle {
+                border-radius: 3px;
+            }
+
+            .photo-container.edge {
+                border: 3px solid #1E90FF;
+            }
+
+            .photo-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* Adjust header layout when photo is present */
+            .has-photo {
+                padding-left: 140px; /* When photo is on the left */
+            }
+
+            .has-photo.photo-right {
+                padding-left: 0;
+                padding-right: 140px;
+            }
+
+            @media (max-width: 768px) {
+                .cv-header {
+                    padding: 0;
+                }
+
+                .photo-container {
+                    position: relative;
+                    margin: 0 auto 1rem auto;
+                }
+
+                .has-photo, .has-photo.photo-right {
+                    padding: 0;
+                }
+            }
+            .cert-link {
+    color: #1E90FF;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+    text-decoration: none;
+}
+
+.cert-link:hover {
+    text-decoration: underline;
+}
+
+/* 弹窗背景 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* 图片 */
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* 关闭按钮 */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+        <header class="cv-header">
+            <div class="photo-container left circle edge">
+                <img src="./证件照.png" alt="Profile Photo">
+            </div>
+            <div class="cv-name">
+                <span class="firstname">赵</span>
+                <span class="lastname">宸</span>
+            </div>
+            <div class="position">
+                AI for Science | 计算材料 | 机器学习建模
+            </div>
+            <div class="contact-info">
+                📍 青岛科技大学四方校区 • 📱 (+86) 15689925461（微信同号） • 📧 Ramos004@163.com
+            </div>
+        </header>
+
+        <main>
+            <section class="section">
+                <h2 class="section-title">个人信息</h2>
+                <div class="info-item">姓名：赵宸</div>
+                <div class="info-item">所属院系与班级：化学与分子工程学院化学专业2023级5班</div>
+                <div class="info-item">户籍地：山东青岛</div>
+                <div class="info-item">政治面貌：中共预备党员</div>
+            </section>
+            <section class="section">
+                <h2 class="section-title">教育经历</h2>
+                <div class="entry">
+                    <h3 class="entry-title">青岛科技大学</h3>
+                    <div class="entry-info">
+                        <span>化学（主修-理学学士） & 人工智能（辅修-工学学士）
+                            <a href="./主修成绩单.pdf" class="cert-link" target="_blank">[查看主修成绩单]</a>
+    <a href="./辅修成绩单.pdf" class="cert-link" target="_blank">[查看辅修成绩单]</a>
+                        </span>
+                        <span> 2023.9至今</span>
+                    </div>
+                    <div class="entry-description">
+                        化学专业主修四大化学及其实验，结构化学，仪器分析，有机波谱分析，胶体与界面化学等。GPA：3.62/5.0（专业前20%）
+                    </div>
+                    <div class="entry-description">
+                        人工智能专业主修机器学习，深度学习，自然语言处理，智能图像处理，网络爬虫与信息提取，大数据基础与应用等。平均学分绩96.59
+                    </div>
+                <div class="entry">  
+                    <h3 class="entry-title">青岛九中</h3>
+                    <div class="entry-info">
+                        <span>
+                        就读于青岛九中德语班，获青岛九中优秀毕业生
+                        <a href="./优秀毕业生.jpg" class="cert-link" target="_blank">[查看证书]</a>
+                        </span>
+                        <span> 2020.9-2023.6</span>
+                    </div>
+                    </div>
+                
+                
+            </section>
+
+
+
+
+
+            <section class="section">
+    <h2 class="section-title">科研与项目经历</h2>
+
+    
+    <div class="entry">
+        <div class="entry-title-small">碳纳米材料制备与实验研究（何茂帅教授课题组）</div>
+        <div class="entry-info">
+            <span>材料化学 / 实验研究</span>
+            <span>2024.4 至今</span>
+        </div>
+        <div class="entry-description">
+            掌握管式炉法制备碳纳米管的实验流程及关键参数控制，理解材料生长机制；
+            参与“互联网+”、“挑战杯”等竞赛项目，并以第四位次获得国家级创新创业训练计划立项。
+            <a href="./大创.png" class="cert-link" target="_blank">[查看证明]</a>
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-title-small">多模态目标检测系统（无人机感知方向）在研</div>
+        <div class="entry-info">
+            <span>AI for Science / 计算机视觉</span>
+            <span>2026.4 至今</span>
+        </div>
+        <div class="entry-description">
+            开展面向无人机感知的多模态目标检测系统研究，目前处于方案设计与技术路线探索阶段。
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-title-small">数学建模与物理建模研究</div>
+
+        <div class="entry-info">
+            <span>2026年美国大学生数学建模竞赛
+                <a href="./美赛论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
+            </span>
+        </div>
+        <div class="entry-description">
+            构建电池功率损耗微分方程模型，引入蒙特卡洛方法进行不确定性分析，提高模型鲁棒性；
+            完成代码实现与数据分析，主导论文核心部分撰写（结果待公布）。
+        </div>
+
+        <div class="entry-info">
+            <span>2025年全国大学生数学建模竞赛（山东赛区三等奖）
+                <a href="./国赛论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
+    <a href="./国赛证书.jpg" class="cert-link" target="_blank">[查看证书]</a>
+            </span>
+        </div>
+        <div class="entry-description">
+            建立单光束干涉模型求解碳化硅外延层厚度，引入随机森林优化折射率求解过程，提高模型稳定性；
+            负责全部编程实现与数据分析，完成论文核心部分撰写。
+        </div>
+    </div>
+
+
+
+    <div class="entry">
+        <div class="entry-title-small">机器学习与数据分析项目</div>
+
+        <div class="entry-info">
+            <span>基于VGG16的垃圾分类模型（2025年节能减排竞赛省级三等奖）
+                <a href="./节能减排论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
+    <a href="./节能减排证书.jpg" class="cert-link" target="_blank">[查看证书]</a>
+            </span>
+        </div>
+        <div class="entry-description">
+            构建基于CNN（VGG16）的图像分类模型，实现垃圾图像自动识别；
+            负责数据收集与清洗、模型训练与参数调优、模型评估等工作。
+        </div>
+
+        <div class="entry-info">
+            <span>金融数据挖掘（机器学习课程项目）
+                <a href="./智慧金融数据挖掘论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
+            </span>
+            <span>2025.1-2025.2</span>
+        </div>
+        <div class="entry-description">
+            使用K-Means算法结合PCA降维对信用卡客户进行聚类分析，实现客户分群与特征提取。
+        </div>
+    </div>
+
+
+    <div class="entry">
+        <div class="entry-title-small">生物化学交叉研究（2025年全国大学生生命科学竞赛科学探究赛道）</div>
+        <div class="entry-info">
+            <span>国家级三等奖
+                <a href="./生科论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
+                <a href="./生科证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
+            </span>
+        </div>
+        <div class="entry-description">
+            构建线粒体靶向近红外探针用于ONOO⁻检测，通过动物实验验证阿尔茨海默症模型中氧化应激增强现象；
+            完成实验设计部分与检测部分，理解生物体系中活性物种检测方法。
+        </div>
+    </div>
+
+
+    
+
+    <div class="entry">
+        <div class="entry-title-small">早期科创经历</div>
+        <div class="entry-info">
+            <span>机器人与科技创新竞赛
+                <a href="./机器人比赛.jpg" class="cert-link" target="_blank">[查看证书]</a>
+                <a href="./科技创新比赛.jpg" class="cert-link" target="_blank">[查看证书]</a>
+            </span>
+            <span>2018 - 2019</span>
+        </div>
+        <div class="entry-description">
+            基于乐高EV3系统，参与机器人系统设计与程序开发，获机器人大赛省级一等奖及科技创新大赛市级一等奖。
+        </div>
+    </div>
+
+</section>
+            
+
+            <section class="section">
+                <h2 class="section-title">奖学金及荣誉称号获得情况</h2>
+                <div class="entry">
+                    <div class="entry-info">
+                        <span>四次校级三等综合奖学金，三次文体优秀奖学金，一次校级优秀学生，一次优秀学生干部
+                            <a href="./奖学金.png" class="cert-link" target="_blank">[查看证明]</a>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+             <section class="section">
+                <h2 class="section-title">技能证书获得情况</h2>
+                <div class="entry">
+                    <div class="entry-info">
+                        <span>CET-6
+                            <a href="./六级证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
+                        </span>
+                        <span>2025.12</span>
+                    </div>
+                    <div class="entry-info">
+                        <span>计算机三级网络技术
+                            <a href="./计算机三级证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
+                        </span>
+                        <span>2024.9</span>
+                    </div>
+                    <div class="entry-info">
+                        <span>计算机二级MS OFFICE
+                            <a href="./计算机二级证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
+                        </span>
+                        <span>2024.3</span>
+                    </div>
+                    <div class="entry-info">
+                        <span>歌德学院德语A1等级证书
+                            <a href="./德语.jpg" class="cert-link" target="_blank">[查看证书]</a>
+                        </span>
+                        <span>2021.4</span>           
+                </div>
+            </section>
+
+            <section class="section">
+    <h2 class="section-title">专业技能掌握情况</h2>
+    <div class="entry">
+        <div class="entry-info">
+            <span>编程与开发</span>
+            <span>Python（数据分析/机器学习），具备MySQL数据库基础，熟悉Linux (Ubuntu)环境</span>
+        </div>
+        <div class="entry-info">
+            <span>机器学习与深度学习</span>
+            <span>熟悉Scikit-learn，PyTorch，具备CNN模型（如VGG16）构建与调参经验</span>
+        </div>
+        <div class="entry-info">
+            <span>数据处理与可视化</span>
+            <span>熟悉Pandas，NumPy进行数据处理，熟悉Matplotlib，Pyecharts进行可视化分析</span>
+        </div>
+        <div class="entry-info">
+            <span>化学实验技能</span>
+            <span>掌握四大化学实验基本操作，具备基础实验经验</span>
+        </div>
+        <div class="entry-info">
+            <span>仪器使用</span>
+            <span>熟悉常规实验仪器操作（管式炉、紫外分光光度计、电位滴定仪等）</span>
+        </div>
+    </div>
+</section>
+
+
+            <section class="section">
+                <h2 class="section-title">学生工作任职情况</h2>
+                <div class="entry">
+                    <div class="entry-info">
+                        <span>青岛科技大学社团管理部四方校区负责人</span>
+                        <span>2025.9至今</span>
+                    </div>
+                    <div class="entry-info">
+                        <span>化学235班团支书</span>
+                        <span>2024.9至今</span>
+                    </div>
+                    <div class="entry-info">
+                        <span>青岛九中社团联合会部长</span>
+                        <span>2021.9-2022.9</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="entry">
+    <h2 class="section-title">研究兴趣</h2>
+
+    <div class="entry-description">
+        研究兴趣聚焦于AI for Science 方向，关注数据驱动方法在材料科学中的应用
+    </div>
+
+    <div class="entry-description">
+        在胶体与界面化学的学习过程中，对表界面体系中的微观相互作用及其动力学行为产生了浓厚兴趣，并希望结合分子动力学模拟方法对相关过程进行建模与分析。
+
+    </div>
+
+    <div class="entry-description">
+        关注数据驱动方法在材料研究中的应用。希望基于碳纳米材料体系，利用图神经网络等方法构建性质预测模型，并结合实验数据进行校正，实现机理驱动与数据驱动的融合，提升对复杂体系的理解能力。
+    </div>
+
+    <div class="entry-description">
+        目前仍在探索具体研究方向，希望在进一步科研训练中逐步明确，并结合自身背景开展深入研究。
+    </div>
+</div>
+
+            <div class="entry">
+    <h2 class="section-title">个人评价</h2>
+
+    <div class="entry-description">
+        具备扎实的化学理论与实验基础，具备良好的数理建模能力，在AI for Science方向具有明确兴趣。
+    </div>
+
+    <div class="entry-description">
+        具备一定的编程与机器学习基础，能够将数据驱动方法与传统机理分析相结合。
+    </div>
+
+    <div class="entry-description">
+        具备较强的自学能力与科研探索意识，能够快速进入新领域并形成初步研究思路。
+    </div>
+
+    <div class="entry-description">
+        具备良好的英语阅读与口语表达能力，能够进行基础的学术交流与文献理解。
+    </div>
+
+    <div class="entry-description">
+        在数学建模等团队项目中积累了较为丰富的协作经验，能够在团队中高效沟通并承担关键任务。
+    </div>
+</div>
+            
+        </main>
+<div id="certModal" class="modal">
+    <span class="close" onclick="closeCert()">&times;</span>
+    <img class="modal-content" src="./优秀毕业生.jpg">
+</div>
+
+<script>
+function openCert() {
+    document.getElementById("certModal").style.display = "block";
+}
+
+function closeCert() {
+    document.getElementById("certModal").style.display = "none";
+}
+</script>
+    </body>
+</html>
