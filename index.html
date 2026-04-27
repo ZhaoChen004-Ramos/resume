@@ -129,12 +129,22 @@
 
             .entry-info {
                 display: flex;
-                justify-content: space-between;
+                align-items: center;
                 font-size: 0.95rem;
-                color: var(--color-graytext);
-                margin-bottom: 0.5rem;
+                gap:0.5rem;
+               
             }
+            .entry-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.left-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
             .entry-description.sub {
     text-indent: 2em;
 }
@@ -229,6 +239,7 @@
     font-size: 0.85rem;
     margin-left: 0.5rem;
     text-decoration: none;
+    display: inline-block;
 }
 
 .cert-link:hover {
@@ -265,6 +276,30 @@
     font-size: 30px;
     cursor: pointer;
 }
+
+
+
+/* ===== 语言切换按钮 ===== */
+.lang-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.lang-toggle button {
+    padding: 5px 10px;
+    border: 1px solid var(--color-awesome);
+    background: white;
+    color: var(--color-awesome);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.lang-toggle button:hover {
+    background: var(--color-awesome);
+    color: white;
+}
         </style>
     </head>
     <body>
@@ -272,6 +307,9 @@
             <div class="photo-container left circle edge">
                 <img src="https://zhaochen004-ramos.github.io/resume/证件照.png" alt="Profile Photo">
             </div>
+            <div class="lang-toggle">
+        <button onclick="toggleLang()">EN / 中文</button>
+    </div>
             <div class="cv-name">
                 <span class="firstname">赵</span>
                 <span class="lastname">宸</span>
@@ -286,293 +324,509 @@
 
         <main>
             <section class="section">
-                <h2 class="section-title">个人信息</h2>
-                <div class="info-item">姓名：赵宸</div>
-                <div class="info-item">所属院系与班级：青岛科技大学四方校区化学与分子工程学院化学专业2023级5班</div>
-                <div class="info-item">户籍地：山东青岛</div>
-                <div class="info-item">政治面貌：中共预备党员</div>
-            </section>
-            <section class="section">
-                <h2 class="section-title">教育经历</h2>
-                <div class="entry">
-                    <h3 class="entry-title">青岛科技大学</h3>
-                    <div class="entry-info">
-                        <span>化学（主修-理学学士） & 人工智能（辅修-工学学士）
-                            <a href="https://zhaochen004-ramos.github.io/resume/主修成绩单.pdf" class="cert-link" target="_blank">[查看主修成绩单]</a>
-    <a href="https://zhaochen004-ramos.github.io/resume/辅修成绩单.pdf" class="cert-link" target="_blank">[查看辅修成绩单]</a>
-                        </span>
-                        <span> 2023.9至今</span>
-                    </div>
-                    <div class="entry-description">
-                        化学专业主修四大化学及其实验，结构化学，仪器分析，有机波谱分析，胶体与界面化学等。GPA：3.62/5.0（专业前20%）
-                    </div>
-                    <div class="entry-description">
-                        人工智能专业主修机器学习，深度学习，自然语言处理，智能图像处理，网络爬虫与信息提取，大数据基础与应用等。平均学分绩96.59
-                    </div>
-                <div class="entry">  
-                    <h3 class="entry-title">青岛九中</h3>
-                    <div class="entry-info">
-                        <span>
-                        就读于青岛九中德语班，获青岛九中优秀毕业生
-                        <a href="https://zhaochen004-ramos.github.io/resume/优秀毕业生.jpg" class="cert-link" target="_blank">[查看证书]</a>
-                        </span>
-                        <span> 2020.9-2023.6</span>
-                    </div>
-                    </div>
-                
-                
-            </section>
+    <h2 class="section-title" data-zh="个人信息" data-en="Personal Information">个人信息</h2>
+    <div class="info-item">
+        <span data-zh="姓名：" data-en="Name: ">姓名：</span>
+        <span data-zh="赵宸" data-en="Chen Zhao">赵宸</span>
+    </div>
+    <div class="info-item">
+        <span data-zh="所属院系：" data-en="Department: ">所属院系：</span>
+        <span data-zh="化学与分子工程学院 化学专业 2023级" data-en="School of Chemistry and Molecular Engineering, Chemistry, Class of 2027">化学与分子工程学院 化学专业 2023级</span>
+    </div>
+    <div class="info-item">
+        <span data-zh="户籍地：" data-en="Hometown: ">户籍地：</span>
+        <span data-zh="山东青岛" data-en="Qingdao, Shandong">山东青岛</span>
+    </div>
+    <div class="info-item">
+        <span data-zh="政治面貌：" data-en="Political Status: ">政治面貌：</span>
+        <span data-zh="中共预备党员" data-en="Probationary Member of the CPC">中共预备党员</span>
+    </div>
+</section>
 
-
-
-
-
-            <section class="section">
-    <h2 class="section-title">科研与项目经历</h2>
-
+<section class="section">
+    <h2 class="section-title" data-zh="教育经历" data-en="Education">教育经历</h2>
     
     <div class="entry">
-        <div class="entry-title-small">碳纳米材料制备与实验研究（何茂帅教授课题组）</div>
+        <h3 class="entry-title" data-zh="青岛科技大学" data-en="Qingdao University of Science and Technology (QUST)">青岛科技大学</h3>
         <div class="entry-info">
-            <span>材料化学 / 实验研究</span>
-            <span>2024.4 至今</span>
+            <div class="left-group">
+                <span data-zh="化学（主修-理学学士） & 人工智能（辅修-工学学士）" 
+                      data-en="B.S. in Chemistry (Major) & B.Eng. in Artificial Intelligence (Minor)">
+                    化学（主修-理学学士） & 人工智能（辅修-工学学士）
+                </span>
+                <a href="https://zhaochen004-ramos.github.io/resume/主修成绩单.pdf" class="cert-link" target="_blank" data-zh="[主修成绩单]" data-en="[Major Transcript]">[查看主修成绩单]</a>
+                <a href="https://zhaochen004-ramos.github.io/resume/辅修成绩单.pdf" class="cert-link" target="_blank" data-zh="[辅修成绩单]" data-en="[Minor Transcript]">[查看辅修成绩单]</a>
+            </div>
+            <span data-zh="2023.9至今" data-en="2023.9-Present">2023.9至今</span>
         </div>
         <div class="entry-description">
-            掌握管式炉法制备碳纳米管的实验流程及关键参数控制，理解材料生长机制；
-            参与“互联网+”、“挑战杯”等竞赛项目，并以第四位次获得国家级创新创业训练计划立项。
-            <a href="https://zhaochen004-ramos.github.io/resume/大创.png" class="cert-link" target="_blank">[查看证明]</a>
+            <div data-zh="<b>化学专业：</b>主修四大化学、结构化学、仪器分析及界面化学等。GPA：3.62/5.0（专业前20%）" 
+                 data-en="<b>Chemistry:</b> Core courses in Physical, Analytical, Organic, Inorganic Chemistry, and Interface Chemistry. GPA: 3.62/5.0 (Top 20%)">
+                <b>化学专业：</b>主修四大化学及其实验，结构化学，仪器分析，有机波谱分析，胶体与界面化学等。GPA：3.62/5.0（专业前20%）
+            </div>
+            <div data-zh="<b>人工智能专业：</b>主修机器学习、深度学习、自然语言处理等。平均学分绩：96.59" 
+                 data-en="<b>AI:</b> Focus on Machine Learning, Deep Learning, NLP, and Computer Vision. Weighted Average: 96.59/100">
+                人工智能专业主修机器学习，深度学习，自然语言处理，智能图像处理，网络爬虫与信息提取，大数据基础与应用等。平均学分绩96.59
+            </div>
         </div>
     </div>
 
     <div class="entry">
-        <div class="entry-title-small">多模态目标检测系统（无人机感知方向）在研</div>
+        <h3 class="entry-title" data-zh="青岛九中" data-en="Qingdao No.9 High School">青岛九中</h3>
         <div class="entry-info">
-            <span>AI for Science / 计算机视觉</span>
-            <span>2026.4 至今</span>
+            <div class="left-group">
+                <span data-zh="就读于德语班，获“优秀毕业生”称号" data-en="German Language Class, Honored as 'Outstanding Graduate'">
+                    就读于青岛九中德语班，获青岛九中优秀毕业生
+                </span>
+                <a href="https://zhaochen004-ramos.github.io/resume/优秀毕业生.jpg" class="cert-link" target="_blank" data-zh="[查看证书]" data-en="[View Certificate]">[查看证书]</a>
+            </div>
+            <span data-zh="2020.9-2023.6" data-en="2020.9-2023.6">2020.9-2023.6</span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+            <section class="section">
+    <h2 class="section-title" data-zh="科研与项目经历" data-en="Research & Project Experience">科研与项目经历</h2>
+
+    <div class="entry">
+        <div class="entry-title-small" data-zh="碳纳米材料制备与实验研究（何茂帅教授课题组）" data-en="Preparation and Experimental Study of Carbon Nanomaterials (Prof. Maoshuai He's Group)">碳纳米材料制备与实验研究（何茂帅教授课题组）</div>
+        <div class="entry-info">
+            <div class="left-group">
+                <span data-zh="材料化学 / 实验研究" data-en="Materials Chemistry / Experimental Research">材料化学 / 实验研究</span>
+            </div>
+            <span data-zh="2024.4至今" data-en="2024.4-Present">2024.4 至今</span>
         </div>
         <div class="entry-description">
+            <span data-zh="掌握管式炉法制备碳纳米管的实验流程及关键参数控制，理解材料生长机制；参与“互联网+”、“挑战杯”等竞赛项目，并以第四位次获得国家级创新创业训练计划立项。" 
+                  data-en="Mastered CVD growth of carbon nanotubes; participated in 'Internet+' and 'Challenge Cup'; National Innovation Program Member (Rank: 4th).">
+                掌握管式炉法制备碳纳米管的实验流程及关键参数控制，理解材料生长机制；参与“互联网+”、“挑战杯”等竞赛项目，并以第四位次获得国家级创新创业训练计划立项。
+            </span>
+            <a href="https://zhaochen004-ramos.github.io/resume/大创.png" class="cert-link" target="_blank" data-zh="[查看证明]" data-en="[View Certificate]">[查看证明]</a>
+        </div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-title-small" data-zh="多模态目标检测系统（无人机感知方向）在研" data-en="Multimodal Target Detection System (UAV Perception) - Ongoing">多模态目标检测系统（无人机感知方向）在研</div>
+        <div class="entry-info">
+            <div class="left-group">
+                <span data-zh="AI for Science / 计算机视觉" data-en="AI for Science / Computer Vision">AI for Science / 计算机视觉</span>
+            </div>
+            <span data-zh="2026.4至今" data-en="2026.4-Present">2026.4 至今</span>
+        </div>
+        <div class="entry-description" data-zh="开展面向无人机感知的多模态目标检测系统研究，目前处于方案设计与技术路线探索阶段。" data-en="Researching multimodal detection for UAVs; currently in the architecture design and technical exploration phase.">
             开展面向无人机感知的多模态目标检测系统研究，目前处于方案设计与技术路线探索阶段。
         </div>
     </div>
 
     <div class="entry">
-        <div class="entry-title-small">数学建模与物理建模研究</div>
-
+        <div class="entry-title-small" data-zh="数学建模与物理建模研究" data-en="Mathematical & Physical Modeling Research">数学建模与物理建模研究</div>
+        
         <div class="entry-info">
-            <span>2026年美国大学生数学建模竞赛
-                <a href="https://zhaochen004-ramos.github.io/resume/美赛论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
-            </span>
+            <div class="left-group">
+                <span data-zh="2026年美国大学生数学建模竞赛" data-en="2026 MCM/ICM">2026年美国大学生数学建模竞赛</span>
+                <a href="https://zhaochen004-ramos.github.io/resume/美赛论文.pdf" class="cert-link" target="_blank" data-zh="[查看论文]" data-en="[View Paper]">[查看论文]</a>
+            </div>
+            <span data-zh="2026.2" data-en="2026.2">2026.2</span>
         </div>
-        <div class="entry-description">
-            构建电池功率损耗微分方程模型，引入蒙特卡洛方法进行不确定性分析，提高模型鲁棒性；
-            完成代码实现与数据分析，主导论文核心部分撰写（结果待公布）。
+        <div class="entry-description" data-zh="构建电池功率损耗微分方程模型，引入蒙特卡洛方法进行不确定性分析，提高模型鲁棒性。" data-en="Built ODE model for battery power loss; used Monte Carlo simulation for robustness analysis.">
+            构建电池功率损耗微分方程模型，引入蒙特卡洛方法进行不确定性分析，提高模型鲁棒性。
         </div>
 
-        <div class="entry-info">
-            <span>2025年全国大学生数学建模竞赛（山东赛区三等奖）
-                <a href="https://zhaochen004-ramos.github.io/resume/国赛论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
-    <a href="https://zhaochen004-ramos.github.io/resume/国赛证书.jpg" class="cert-link" target="_blank">[查看证书]</a>
-            </span>
+        <div class="entry-info" style="margin-top: 5px;">
+            <div class="left-group">
+                <span data-zh="2025年全国大学生数学建模竞赛（山东赛区三等奖）" data-en="2025 CUMCM (3rd Prize, Shandong)">2025年全国大学生数学建模竞赛（山东赛区三等奖）</span>
+                <a href="https://zhaochen004-ramos.github.io/resume/国赛论文.pdf" class="cert-link" target="_blank" data-zh="[查看论文]" data-en="[View Paper]">[查看论文]</a>
+                <a href="https://zhaochen004-ramos.github.io/resume/国赛证书.jpg" class="cert-link" target="_blank" data-zh="[查看证书]" data-en="[View Certificate]">[查看证书]</a>
+            </div>
+            <span data-zh="2025.9" data-en="2025.9">2025.9</span>
         </div>
-        <div class="entry-description">
-            建立单光束干涉模型求解碳化硅外延层厚度，引入随机森林优化折射率求解过程，提高模型稳定性；
-            负责全部编程实现与数据分析，完成论文核心部分撰写。
+        <div class="entry-description" data-zh="建立单光束干涉模型求解碳化硅外延层厚度，引入随机森林优化折射率求解过程。" data-en="Established interference model for SiC thickness; optimized refractive index using Random Forest.">
+            建立单光束干涉模型求解碳化硅外延层厚度，引入随机森林优化折射率求解过程。
         </div>
     </div>
-
-
 
     <div class="entry">
-        <div class="entry-title-small">机器学习与数据分析项目</div>
-
+        <div class="entry-title-small" data-zh="机器学习与数据分析项目" data-en="Machine Learning & Data Analysis">机器学习与数据分析项目</div>
+        
         <div class="entry-info">
-            <span>基于VGG16的垃圾分类模型（2025年节能减排竞赛省级三等奖）
-                <a href="https://zhaochen004-ramos.github.io/resume/节能减排论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
-    <a href="https://zhaochen004-ramos.github.io/resume/节能减排证书.jpg" class="cert-link" target="_blank">[查看证书]</a>
-            </span>
+            <div class="left-group">
+                <span data-zh="基于VGG16的垃圾分类模型（节能减排竞赛省级三等奖）" data-en="VGG16-based Waste Classification (Provincial 3rd Prize)">基于VGG16的垃圾分类模型（2025年节能减排竞赛省级三等奖）</span>
+                <a href="https://zhaochen004-ramos.github.io/resume/节能减排论文.pdf" class="cert-link" target="_blank" data-zh="[查看论文]" data-en="[View Paper]">[查看论文]</a>
+                <a href="https://zhaochen004-ramos.github.io/resume/节能减排证书.jpg" class="cert-link" target="_blank" data-zh="[查看证书]" data-en="[View Certificate]">[查看证书]</a>
+            </div>
+            <span data-zh="2025.11" data-en="2025.11">2025.11</span>
         </div>
-        <div class="entry-description">
-            构建基于CNN（VGG16）的图像分类模型，实现垃圾图像自动识别；
-            负责数据收集与清洗、模型训练与参数调优、模型评估等工作。
+        <div class="entry-description" data-zh="构建基于CNN（VGG16）的图像分类模型，负责数据清洗、模型训练与参数调优。" data-en="Built CNN-based classification model; responsible for data cleaning, training and tuning.">
+            构建基于CNN（VGG16）的图像分类模型，负责数据清洗、模型训练与参数调优。
         </div>
 
-        <div class="entry-info">
-            <span>金融数据挖掘（机器学习课程项目）
-                <a href="https://zhaochen004-ramos.github.io/resume/智慧金融数据挖掘论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
-            </span>
-            <span>2025.1-2025.2</span>
+        <div class="entry-info" style="margin-top: 5px;">
+            <div class="left-group">
+                <span data-zh="金融数据挖掘（机器学习课程项目）" data-en="Financial Data Mining (Course Project)">金融数据挖掘（机器学习课程项目）</span>
+                <a href="https://zhaochen004-ramos.github.io/resume/智慧金融数据挖掘论文.pdf" class="cert-link" target="_blank" data-zh="[查看论文]" data-en="[View Paper]">[查看论文]</a>
+            </div>
+            <span data-zh="2025.1-2025.2" data-en="2025.1-2025.2">2025.1-2025.2</span>
         </div>
-        <div class="entry-description">
-            使用K-Means算法结合PCA降维对信用卡客户进行聚类分析，实现客户分群与特征提取。
+        <div class="entry-description" data-zh="使用K-Means算法结合PCA降维对信用卡客户进行聚类分析。" data-en="Conducted clustering analysis for credit card customers using K-Means and PCA.">
+            使用K-Means算法结合PCA降维对信用卡客户进行聚类分析。
         </div>
     </div>
-
 
     <div class="entry">
-        <div class="entry-title-small">生物化学交叉研究（2025年全国大学生生命科学竞赛科学探究赛道）</div>
+        <div class="entry-title-small" data-zh="生物化学交叉研究（全国大学生生命科学竞赛）" data-en="Biochemical Research (CULSC)">生物化学交叉研究（2025年全国大学生生命科学竞赛科学探究赛道）</div>
         <div class="entry-info">
-            <span>国家级三等奖
-                <a href="https://zhaochen004-ramos.github.io/resume/生科论文.pdf" class="cert-link" target="_blank">[查看论文]</a>
-                <a href="https://zhaochen004-ramos.github.io/resume/生科证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
-            </span>
+            <div class="left-group">
+                <span data-zh="国家级三等奖" data-en="National 3rd Prize">国家级三等奖</span>
+                <a href="https://zhaochen004-ramos.github.io/resume/生科论文.pdf" class="cert-link" target="_blank" data-zh="[查看论文]" data-en="[View Paper]">[查看论文]</a>
+                <a href="https://zhaochen004-ramos.github.io/resume/生科证书.pdf" class="cert-link" target="_blank" data-zh="[查看证书]" data-en="[View Certificate]">[查看证书]</a>
+            </div>
+            <span data-zh="2025.7" data-en="2025.7">2025.7</span>
         </div>
-        <div class="entry-description">
-            构建线粒体靶向近红外探针用于ONOO⁻检测，通过动物实验验证阿尔茨海默症模型中氧化应激增强现象；
-            完成实验设计部分与检测部分，理解生物体系中活性物种检测方法。
+        <div class="entry-description" data-zh="构建线粒体靶向近红外探针用于ONOO⁻检测，完成实验设计与检测部分。" data-en="Developed NIR probe for ONOO⁻ detection; completed experimental design and validation.">
+            构建线粒体靶向近红外探针用于ONOO⁻检测，通过动物实验验证阿尔茨海默症模型中氧化应激增强现象。
         </div>
     </div>
 
+    <div class="entry" style="opacity: 0.8;">
+        <div class="entry-title-small" data-zh="早期科创经历" data-en="Early Innovation Experience">早期科创经历</div>
+        <div class="entry-info">
+            <div class="left-group">
+                <span data-zh="机器人与科技创新竞赛" data-en="Robotics & Tech Innovation Competitions">机器人与科技创新竞赛</span>
+                <a href="https://zhaochen004-ramos.github.io/resume/机器人比赛.jpg" class="cert-link" target="_blank" data-zh="[查看证书]" data-en="[View Certificate]">[查看证书]</a>
+                <a href="https://zhaochen004-ramos.github.io/resume/科技创新比赛.jpg" class="cert-link" target="_blank" data-zh="[查看证书]" data-en="[View Certificate]">[查看证书]</a>
+            </div>
+            <span data-zh="2018-2019" data-en="2018-2019">2018-2019</span>
+        </div>
+        <div class="entry-description" data-zh="基于乐高EV3系统，获机器人大赛省级一等奖及科技创新大赛市级一等奖。" data-en="Won Provincial 1st Prize in Robotics and Municipal 1st Prize in Tech Innovation based on LEGO EV3.">
+            基于乐高EV3系统，参与机器人系统设计与程序开发。
+        </div>
+    </div>
+</section>
+    <h2 class="section-title"
+        data-zh="奖学金及荣誉称号获得情况"
+        data-en="Honors & Awards">
+        奖学金及荣誉称号获得情况
+    </h2>
 
+    <div class="entry">
+        <div class="entry-info">
+
+            <div class="left-group">
+                <span
+                    data-zh="四次校级三等综合奖学金，三次文体优秀奖学金，一次校级优秀学生，一次优秀学生干部"
+                    data-en="Third-Class Academic Scholarship (4×), Excellence Scholarship in Arts & Sports (3×), Outstanding Student, Outstanding Student Leader">
+                    四次校级三等综合奖学金，三次文体优秀奖学金，一次校级优秀学生，一次优秀学生干部
+                </span>
+
+                <a href="https://zhaochen004-ramos.github.io/resume/奖学金.png"
+                   class="cert-link"
+                   target="_blank"
+                   data-zh="[查看证明]"
+                   data-en="[View Certificate]">
+                   [查看证明]
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <h2 class="section-title"
+        data-zh="技能证书获得情况"
+        data-en="Certifications">
+        技能证书获得情况
+    </h2>
+
+    <div class="entry">
+
+        <div class="entry-info">
+
+            <div class="left-group">
+                <span
+                    data-zh="CET-6"
+                    data-en="CET-6 (College English Test Band 6)">
+                    CET-6
+                </span>
+
+                <a href="https://zhaochen004-ramos.github.io/resume/六级证书.pdf"
+                   class="cert-link"
+                   target="_blank"
+                   data-zh="[查看证书]"
+                   data-en="[View Certificate]">
+                   [查看证书]
+                </a>
+            </div>
+
+            <span class="date">2025.12</span>
+        </div>
+
+
+        <div class="entry-info">
+
+            <div class="left-group">
+                <span
+                    data-zh="计算机三级网络技术"
+                    data-en="National Computer Rank Examination Level 3 (Network Technology)">
+                    计算机三级网络技术
+                </span>
+
+                <a href="https://zhaochen004-ramos.github.io/resume/计算机三级证书.pdf"
+                   class="cert-link"
+                   target="_blank"
+                   data-zh="[查看证书]"
+                   data-en="[View Certificate]">
+                   [查看证书]
+                </a>
+            </div>
+
+            <span class="date">2024.9</span>
+        </div>
+
+
+        <div class="entry-info">
+
+            <div class="left-group">
+                <span
+                    data-zh="计算机二级MS Office"
+                    data-en="National Computer Rank Examination Level 2 (MS Office)">
+                    计算机二级MS OFFICE
+                </span>
+
+                <a href="https://zhaochen004-ramos.github.io/resume/计算机二级证书.pdf"
+                   class="cert-link"
+                   target="_blank"
+                   data-zh="[查看证书]"
+                   data-en="[View Certificate]">
+                   [查看证书]
+                </a>
+            </div>
+
+            <span class="date">2024.3</span>
+        </div>
+
+
+        <div class="entry-info">
+
+            <div class="left-group">
+                <span
+                    data-zh="歌德学院德语A1等级证书"
+                    data-en="Goethe-Zertifikat A1 (German Language)">
+                    歌德学院德语A1等级证书
+                </span>
+
+                <a href="https://zhaochen004-ramos.github.io/resume/德语.jpg"
+                   class="cert-link"
+                   target="_blank"
+                   data-zh="[查看证书]"
+                   data-en="[View Certificate]">
+                   [查看证书]
+                </a>
+            </div>
+
+            <span class="date">2021.4</span>
+        </div>
+
+    </div>
+</section>
+
+            <section class="section">
+    <h2 class="section-title"
+        data-zh="专业技能掌握情况"
+        data-en="Technical Skills">
+        专业技能掌握情况
+    </h2>
+
+    <div class="entry">
+
+        <div class="entry-info">
+            <span
+                data-zh="编程与开发"
+                data-en="Programming & Development">
+                编程与开发
+            </span>
+            <span
+                data-zh="Python（数据分析/机器学习），具备MySQL数据库基础，熟悉Linux (Ubuntu)环境"
+                data-en="Python (data analysis & machine learning), basic knowledge of MySQL databases, familiar with Linux (Ubuntu) environment">
+                Python（数据分析/机器学习），具备MySQL数据库基础，熟悉Linux (Ubuntu)环境
+            </span>
+        </div>
+
+        <div class="entry-info">
+            <span
+                data-zh="机器学习与深度学习"
+                data-en="Machine Learning & Deep Learning">
+                机器学习与深度学习
+            </span>
+            <span
+                data-zh="熟悉Scikit-learn，PyTorch，具备CNN模型（如VGG16）构建与调参经验"
+                data-en="Familiar with Scikit-learn and PyTorch, with experience in building and tuning CNN models (e.g., VGG16)">
+                熟悉Scikit-learn，PyTorch，具备CNN模型（如VGG16）构建与调参经验
+            </span>
+        </div>
+
+        <div class="entry-info">
+            <span
+                data-zh="数据处理与可视化"
+                data-en="Data Processing & Visualization">
+                数据处理与可视化
+            </span>
+            <span
+                data-zh="熟悉Pandas，NumPy进行数据处理，熟悉Matplotlib，Pyecharts进行可视化分析"
+                data-en="Proficient in data processing using Pandas and NumPy, and data visualization with Matplotlib and Pyecharts">
+                熟悉Pandas，NumPy进行数据处理，熟悉Matplotlib，Pyecharts进行可视化分析
+            </span>
+        </div>
+
+        <div class="entry-info">
+            <span
+                data-zh="化学实验技能"
+                data-en="Experimental Skills in Chemistry">
+                化学实验技能
+            </span>
+            <span
+                data-zh="掌握四大化学实验基本操作，具备基础实验经验"
+                data-en="Solid foundation in core chemistry laboratory techniques with hands-on experience">
+                掌握四大化学实验基本操作，具备基础实验经验
+            </span>
+        </div>
+
+        <div class="entry-info">
+            <span
+                data-zh="仪器使用"
+                data-en="Instrumentation">
+                仪器使用
+            </span>
+            <span
+                data-zh="熟悉常规实验仪器操作（管式炉、紫外分光光度计、电位滴定仪等）"
+                data-en="Familiar with common laboratory instruments, including tube furnaces, UV–Vis spectrophotometers, and potentiometric titrators">
+                熟悉常规实验仪器操作（管式炉、紫外分光光度计、电位滴定仪等）
+            </span>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title"
+        data-zh="学生工作任职情况"
+        data-en="Leadership & Student Activities">
+        学生工作任职情况
+    </h2>
+
+    <div class="entry">
+
+        <div class="entry-info">
+            <span
+                data-zh="青岛科技大学社团管理部四方校区负责人"
+                data-en="Head of Student Organization Management Office, Sifang Campus, Qingdao University of Science and Technology">
+                青岛科技大学社团管理部四方校区负责人
+            </span>
+            <span data-zh="2025.9至今"
+                  data-en="2025.9-Present"
+            >2025.9至今</span>
+        </div>
+
+        <div class="entry-info">
+            <span
+                data-zh="化学235班团支书"
+                data-en="Class Secretary, Chemistry Class 235">
+                化学235班团支书
+            </span>
+            <span data-zh="2024.9至今"
+                  data-en="2024.9-Present"
+            >2024.9至今</span>
+        </div>
+
+        <div class="entry-info">
+            <span
+                data-zh="青岛九中社团联合会部长"
+                data-en="Minister, Student Clubs Union, Qingdao No.9 High School">
+                青岛九中社团联合会部长
+            </span>
+            <span>2021.9–2022.9</span>
+        </div>
+
+    </div>
+</section>
+
+
+            <div class="entry">
+    <h2 class="section-title"
+        data-zh="研究兴趣"
+        data-en="Research Interests">研究兴趣</h2>
+
+    <div class="entry-description bullet"
+     data-zh="研究兴趣聚焦于AI for Science方向，关注数据驱动方法在材料科学中的应用。"
+     data-en="My research interests focus on AI for Science, particularly the application of data-driven approaches in materials science.">
+    研究兴趣聚焦于AI for Science方向，关注数据驱动方法在材料科学中的应用。
+</div>
+
+    <div class="entry-description bullet"
+
+    data-zh="在胶体与界面化学的学习过程中，对表界面体系中的微观相互作用及其动力学行为产生了浓厚兴趣，并希望结合分子动力学模拟方法对相关过程进行建模与分析。"
+    data-en="Through my studies in colloid and interface chemistry, I have developed a strong interest in understanding microscopic interactions and dynamic behaviors at interfaces. I am especially interested in applying molecular dynamics simulations to model such processes.">
+    在胶体与界面化学的学习过程中，对表界面体系中的微观相互作用及其动力学行为产生了浓厚兴趣，并希望结合分子动力学模拟方法对相关过程进行建模与分析。
+</div>
+
+    <div class="entry-description bullet"
+
+    data-zh="关注数据驱动在材料研究中的应用。希望基于碳纳米材料，利用图神经网络等方法构建预测模型，结合实验进行校正，实现机理驱动与数据驱动的融合，提升对复杂体系的理解能力。"
+    data-en="I am particularly interested in the application of data-driven approaches in materials research. Specifically, I aim to develop predictive models for carbon-based nanomaterials using methods such as graph neural networks, and to integrate these with experimental validation to bridge mechanism-driven and data-driven approaches, thereby enhancing the understanding of complex systems.">
+    关注数据驱动在材料研究中的应用。希望基于碳纳米材料，利用图神经网络等方法构建预测模型，结合实验进行校正，实现机理驱动与数据驱动的融合，提升对复杂体系的理解能力。
+</div>
+
+    <div class="entry-description bullet"
+
+    data-zh="目前仍在探索具体研究方向，希望在进一步科研训练中逐步明确，并结合自身背景开展深入研究。"
+    data-en="At present, I am still exploring specific research directions. I hope to further clarify my interests through systematic research training and to pursue in-depth studies aligned with my interdisciplinary background.">
+    目前仍在探索具体研究方向，希望在进一步科研训练中逐步明确，并结合自身背景开展深入研究。
+</div>
     
-
-    <div class="entry">
-        <div class="entry-title-small">早期科创经历</div>
-        <div class="entry-info">
-            <span>机器人与科技创新竞赛
-                <a href="https://zhaochen004-ramos.github.io/resume/机器人比赛.jpg" class="cert-link" target="_blank">[查看证书]</a>
-                <a href="https://zhaochen004-ramos.github.io/resume/科技创新比赛.jpg" class="cert-link" target="_blank">[查看证书]</a>
-            </span>
-            <span>2018 - 2019</span>
-        </div>
-        <div class="entry-description">
-            基于乐高EV3系统，参与机器人系统设计与程序开发，获机器人大赛省级一等奖及科技创新大赛市级一等奖。
-        </div>
-    </div>
-
-</section>
-            
-
-            <section class="section">
-                <h2 class="section-title">奖学金及荣誉称号获得情况</h2>
-                <div class="entry">
-                    <div class="entry-info">
-                        <span>四次校级三等综合奖学金，三次文体优秀奖学金，一次校级优秀学生，一次优秀学生干部
-                            <a href="https://zhaochen004-ramos.github.io/resume/奖学金.png" class="cert-link" target="_blank">[查看证明]</a>
-                        </span>
-                    </div>
-                </div>
-            </section>
-
-             <section class="section">
-                <h2 class="section-title">技能证书获得情况</h2>
-                <div class="entry">
-                    <div class="entry-info">
-                        <span>CET-6
-                            <a href="https://zhaochen004-ramos.github.io/resume/六级证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
-                        </span>
-                        <span>2025.12</span>
-                    </div>
-                    <div class="entry-info">
-                        <span>计算机三级网络技术
-                            <a href="https://zhaochen004-ramos.github.io/resume/计算机三级证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
-                        </span>
-                        <span>2024.9</span>
-                    </div>
-                    <div class="entry-info">
-                        <span>计算机二级MS OFFICE
-                            <a href="https://zhaochen004-ramos.github.io/resume/计算机二级证书.pdf" class="cert-link" target="_blank">[查看证书]</a>
-                        </span>
-                        <span>2024.3</span>
-                    </div>
-                    <div class="entry-info">
-                        <span>歌德学院德语A1等级证书
-                            <a href="https://zhaochen004-ramos.github.io/resume/德语.jpg" class="cert-link" target="_blank">[查看证书]</a>
-                        </span>
-                        <span>2021.4</span>           
-                </div>
-            </section>
-
-            <section class="section">
-    <h2 class="section-title">专业技能掌握情况</h2>
-    <div class="entry">
-        <div class="entry-info">
-            <span>编程与开发</span>
-            <span>Python（数据分析/机器学习），具备MySQL数据库基础，熟悉Linux (Ubuntu)环境</span>
-        </div>
-        <div class="entry-info">
-            <span>机器学习与深度学习</span>
-            <span>熟悉Scikit-learn，PyTorch，具备CNN模型（如VGG16）构建与调参经验</span>
-        </div>
-        <div class="entry-info">
-            <span>数据处理与可视化</span>
-            <span>熟悉Pandas，NumPy进行数据处理，熟悉Matplotlib，Pyecharts进行可视化分析</span>
-        </div>
-        <div class="entry-info">
-            <span>化学实验技能</span>
-            <span>掌握四大化学实验基本操作，具备基础实验经验</span>
-        </div>
-        <div class="entry-info">
-            <span>仪器使用</span>
-            <span>熟悉常规实验仪器操作（管式炉、紫外分光光度计、电位滴定仪等）</span>
-        </div>
-    </div>
-</section>
-
-
-            <section class="section">
-                <h2 class="section-title">学生工作任职情况</h2>
-                <div class="entry">
-                    <div class="entry-info">
-                        <span>青岛科技大学社团管理部四方校区负责人</span>
-                        <span>2025.9至今</span>
-                    </div>
-                    <div class="entry-info">
-                        <span>化学235班团支书</span>
-                        <span>2024.9至今</span>
-                    </div>
-                    <div class="entry-info">
-                        <span>青岛九中社团联合会部长</span>
-                        <span>2021.9-2022.9</span>
-                    </div>
-                </div>
-            </section>
-
-
-            <div class="entry">
-    <h2 class="section-title">研究兴趣</h2>
-
-    <div class="entry-description bullet">
-        研究兴趣聚焦于AI for Science 方向，关注数据驱动方法在材料科学中的应用
-    </div>
-
-    <div class="entry-description bullet">
-        在胶体与界面化学的学习过程中，对表界面体系中的微观相互作用及其动力学行为产生了浓厚兴趣，并希望结合分子动力学模拟方法对相关过程进行建模与分析。
-
-    </div>
-
-    <div class="entry-description bullet">
-        关注数据驱动在材料研究中的应用。希望基于碳纳米材料，利用图神经网络等方法构建预测模型，结合实验进行校正，实现机理驱动与数据驱动的融合，提升对复杂体系的理解能力。
-    </div>
-
-    <div class="entry-description bullet">
-        目前仍在探索具体研究方向，希望在进一步科研训练中逐步明确，并结合自身背景开展深入研究。
-    </div>
 </div>
 
             <div class="entry">
-    <h2 class="section-title">个人评价</h2>
+    <h2 class="section-title"
+        data-en="Summary of Qualifications"
+        data-zh="个人评价">个人评价</h2>
 
-    <div class="entry-description bullet">
-        具备扎实的化学理论与实验基础，具备良好的数理建模能力，在AI for Science方向具有明确兴趣。
-    </div>
+    <div class="entry-description bullet"
 
-    <div class="entry-description bullet">
-        具备一定的编程与机器学习基础，能够将数据驱动方法与传统机理分析相结合。
-    </div>
-
-    <div class="entry-description bullet">
-        具备较强的自学能力与科研探索意识，能够快速进入新领域并形成初步研究思路。
-    </div>
-
-    <div class="entry-description bullet">
-        具备良好的英语阅读与口语表达能力，能够进行基础的学术交流与文献理解。
-    </div>
-
-    <div class="entry-description bullet">
-        在数学建模等团队项目中积累了较为丰富的协作经验，能够在团队中高效沟通并承担关键任务。
-    </div>
+    data-zh="具备扎实的化学理论与实验基础，具备良好的数理建模能力，在AI for Science方向具有明确兴趣。"
+    data-en="I have a solid foundation in chemical theory and experimental techniques, along with strong capabilities in mathematical modeling, and a clear interest in AI for Science.">
+    具备扎实的化学理论与实验基础，具备良好的数理建模能力，在AI for Science方向具有明确兴趣。
 </div>
-            
+    <div class="entry-description bullet"
+
+    data-zh="具备较强的自学能力与科研探索意识，能够快速进入新领域并形成初步研究思路。"
+    data-en="I possess fundamental knowledge in programming and machine learning, and I am able to integrate data-driven approaches with traditional mechanism-based analysis.">
+    具备较强的自学能力与科研探索意识，能够快速进入新领域并形成初步研究思路。
+</div>
+    <div class="entry-description bullet"
+
+    data-zh="在数学建模等团队项目中积累了较为丰富的协作经验，能够在团队中高效沟通并承担关键任务。"
+    data-en="Through team-based projects such as mathematical modeling competitions, I have developed solid collaboration skills, enabling effective communication and the ability to take on key responsibilities within a team.">
+    在数学建模等团队项目中积累了较为丰富的协作经验，能够在团队中高效沟通并承担关键任务。
+</div>
+
+    <div class="entry-description bullet"
+
+    data-zh="具备一定的编程与机器学习基础，能够将数据驱动方法与传统机理分析相结合。"
+    data-en="I possess fundamental knowledge in programming and machine learning, and I am able to integrate data-driven approaches with traditional mechanism-based analysis.">
+    具备一定的编程与机器学习基础，能够将数据驱动方法与传统机理分析相结合。
+</div>
+
+    <div class="entry-description bullet"
+
+    data-zh="具备良好的英语阅读与口语表达能力，能够进行基础的学术交流与文献理解。"
+    data-en="I have good English reading and oral communication skills, allowing me to understand academic literature and engage in basic academic discussions.">
+    具备良好的英语阅读与口语表达能力，能够进行基础的学术交流与文献理解。
+</div>
         </main>
 <div id="certModal" class="modal">
     <span class="close" onclick="closeCert()">&times;</span>
@@ -580,12 +834,22 @@
 </div>
 
 <script>
-function openCert() {
-    document.getElementById("certModal").style.display = "block";
+let currentLang = 'zh';
+
+function toggleLang() {
+    currentLang = currentLang === 'zh' ? 'en' : 'zh';
+
+    document.querySelectorAll('[data-zh]').forEach(el => {
+        const content = el.getAttribute('data-' + currentLang);
+        if (content) el.innerHTML = content;
+    });
 }
 
-function closeCert() {
-    document.getElementById("certModal").style.display = "none";
+function switchLang(lang) {
+    document.querySelectorAll('[data-zh]').forEach(el => {
+        const content = el.getAttribute('data-' + lang);
+        if (content) el.innerHTML = content;
+    });
 }
 </script>
     </body>
